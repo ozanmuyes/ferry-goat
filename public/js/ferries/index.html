@@ -1,0 +1,21 @@
+<div class="section">
+    <div class="row">
+        <div class="col s12 m6 l4" ng-repeat="ferry in allFerries" ng-cloak>
+            <div class="card medium hoverable">
+                <div class="card-image">
+                    <img src="img/ferry.jpg" alt="Ferry" class="responsive-img">
+
+                    <span class="card-title">{{ ferry.name }}</span>
+                </div>
+
+                <div class="card-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti nobis sequi, provident ullam.</p>
+                </div>
+
+                <div class="card-action">
+                    <a href="{{ '#/ferries/' + ferry.id + '/edit' }}" class="right-align">Düzenle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

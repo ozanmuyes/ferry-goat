@@ -1,0 +1,45 @@
+<div class="section">
+    <div class="row">
+        <form class="col m12">
+            <div class="row">
+                <div class="input-field col m8 offset-m2">
+                    <input id="name" class="validate" type="text" name="name" placeholder="Sefer Adı" ng-model="newRoute.name">
+
+                    <label for="name">Sefer Adı</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col m4 offset-m2">
+                    <!-- <select> -->
+                    <select on-finish-render>
+                        <option disabled selected>Nereden</option>
+
+                        <option ng-repeat="port in allPorts" value="{{ port.id }}">
+                            {{ port.name }}
+                        </option>
+                    </select>
+
+                    <label>Nereden</label>
+                </div>
+
+                <!-- <div class="input-field col m4">
+                    <select on-finish-render>
+                        <option value="" disabled selected>Nereye</option>
+                        <option ng-repeat="port in allPorts" value="{{ port.id }}">{{ port.name }}</option>
+                    </select>
+
+                    <label>Nereye</label>
+                </div> -->
+            </div>
+
+            <div class="row">
+                <div class="input-field col m8 offset-m2">
+                    <button class="btn waves-effect waves-light" type="submit" ng-click="addRoute()">Ekle
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
