@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ferry-goat.ferries", [])
+angular.module("ferry-goat-site.ferries", [])
 
 .controller("FerriesCtrl", function($scope, $http, $location, Restangular) {
     $scope.newFerry = {};

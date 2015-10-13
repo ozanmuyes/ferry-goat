@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ferry-goat.routes", [])
+angular.module("ferry-goat-site.routes", [])
 
 .controller("RoutesCtrl", function($scope, $http, $location, Restangular) {
     var allRoutes = Restangular.all("routes"),

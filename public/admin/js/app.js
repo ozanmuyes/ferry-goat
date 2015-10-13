@@ -35,13 +35,13 @@ function isEmpty(obj) {
 
 
 // Declare app level module which depends on views, and components
-angular.module("ferry-goat-site", [
+angular.module("ferry-goat-admin", [
     "ngRoute",
     "ngAnimate",
     "restangular",
-    "ferry-goat-site.index",
-    "ferry-goat-site.ferries",
-    "ferry-goat-site.routes"
+    // "ferry-goat-admin.index",
+    // "ferry-goat-admin.ferries",
+    // "ferry-goat-admin.routes"
 ])
 
 .run(["$rootScope", function($rootScope) {
@@ -58,32 +58,32 @@ angular.module("ferry-goat-site", [
             controller: "IndexCtrl"
         })
 
-        .when("/ferries", {
-            title: "Feribotlar",
-            templateUrl: "js/ferries/index.html",
-            controller: "FerriesCtrl"
-        })
-        .when("/ferries/create", {
-            title: "Feribot Ekle",
-            templateUrl: "js/ferries/create.html",
-            controller: "FerriesCtrl"
-        })
-        .when("/ferries/update", {
-            title: "Feribot Düzenle",
-            templateUrl: "js/ferries/update.html",
-            controller: "FerriesCtrl"
-        })
+        // .when("/ferries", {
+        //     title: "Feribotlar",
+        //     templateUrl: "js/ferries/index.html",
+        //     controller: "FerriesCtrl"
+        // })
+        // .when("/ferries/create", {
+        //     title: "Feribot Ekle",
+        //     templateUrl: "js/ferries/create.html",
+        //     controller: "FerriesCtrl"
+        // })
+        // .when("/ferries/update", {
+        //     title: "Feribot Düzenle",
+        //     templateUrl: "js/ferries/update.html",
+        //     controller: "FerriesCtrl"
+        // })
 
-        .when("/routes", {
-            title: "Seferler",
-            templateUrl: "js/routes/index.html",
-            controller: "RoutesCtrl"
-        })
-        .when("/routes/create", {
-            title: "Sefer Ekle",
-            templateUrl: "js/routes/create.html",
-            controller: "RoutesCtrl"
-        })
+        // .when("/routes", {
+        //     title: "Seferler",
+        //     templateUrl: "js/routes/index.html",
+        //     controller: "RoutesCtrl"
+        // })
+        // .when("/routes/create", {
+        //     title: "Sefer Ekle",
+        //     templateUrl: "js/routes/create.html",
+        //     controller: "RoutesCtrl"
+        // })
 
         .otherwise({
             title: "Hata",

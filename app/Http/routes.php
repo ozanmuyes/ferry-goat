@@ -12,7 +12,13 @@
 */
 
 $app->get("/", function () use ($app) {
-    return view("index");
+    return view("site");
+});
+
+$app->get("admin", function () use ($app) {
+    return "foo";
+
+    // return view("admin");
 });
 
 $app->group(

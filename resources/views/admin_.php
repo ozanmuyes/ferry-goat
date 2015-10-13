@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr" ng-app="ferry-goat">
+<html lang="tr" ng-app="ferry-goat-admin">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title ng-bind="'Ferry-Goat &dash; ' + title">Ferry-Goat A.Ş.</title>
+        <title ng-bind="'Ferry-Goat Yönetim Paneli &dash; ' + title">Ferry-Goat Yönetim Paneli</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.css">
@@ -37,6 +37,10 @@
                         <li>
                             <a href="#/routes">Seferler</a>
                         </li>
+
+                        <li>
+                            <a href="/admin/#/login">Giriş</a>
+                        </li>
                     </ul>
 
                     <ul id="nav-mobile" class="side-nav">
@@ -46,6 +50,10 @@
 
                         <li>
                             <a href="#/routes">Seferler</a>
+                        </li>
+
+                        <li>
+                            <a href="/admin/#/login">Giriş</a>
                         </li>
                     </ul>
 
@@ -159,10 +167,10 @@
             </div>
         </footer>
 
-        <script src="js/index/index.js"></script>
-        <script src="js/ferries/ferries.js"></script>
-        <script src="js/routes/routes.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/app.js"></script>
+        <!-- <script src="../js/index/index.js"></script>
+        <script src="../js/ferries/ferries.js"></script>
+        <script src="../js/routes/routes.js"></script>
+        <script src="../js/init.js"></script> -->
+        <script src="../js/app.js"></script>
     </body>
 </html>

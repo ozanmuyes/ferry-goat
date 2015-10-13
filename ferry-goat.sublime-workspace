@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"get",
+				"getList"
+			],
+			[
+				"fer",
+				"ferry"
+			],
+			[
+				"fsi",
+				"font-size"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
 				"ec",
 				"enctype	Attr"
 			],
@@ -484,94 +508,65 @@
 				"console"
 			],
 			[
-				"get",
-				"getTest"
-			],
-			[
 				"background",
 				"background-image"
 			],
 			[
 				"baco",
 				"background-color"
-			],
-			[
-				"cl",
-				"cl	Console Log Shortcut"
-			],
-			[
-				"ins",
-				"instruction-dnd"
-			],
-			[
-				"op",
-				"opacity"
-			],
-			[
-				"drop",
-				"dropzone-container"
-			],
-			[
-				"click",
-				"clickable"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "public/js/ferries/update.html",
-			"settings":
-			{
-				"buffer_size": 1253,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 4143,
+				"buffer_size": 4218,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/site.php",
+			"settings":
+			{
+				"buffer_size": 7961,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/app.js",
+			"file": "resources/views/admin.php",
 			"settings":
 			{
-				"buffer_size": 3160,
+				"buffer_size": 8021,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/ferries/create.html",
+			"contents": "\"use strict\";\n\nString.prototype.endsWith = function(suffix) {\n    return this.indexOf(suffix, this.length - suffix.length) !== -1;\n};\n\nvar hasOwnProperty = Object.prototype.hasOwnProperty;\nfunction isEmpty(obj) {\n    // null and undefined are \"empty\"\n    if (obj == null) {\n        return true\n    };\n\n    // Assume if it has a length property with a non-zero value\n    // that that property is correct.\n    if (obj.length > 0) {\n        return false;\n    }\n\n    if (obj.length === 0) {\n        return true;\n    }\n\n    // Otherwise, does it have any properties of its own?\n    // Note that this doesn't handle\n    // toString and valueOf enumeration bugs in IE < 9\n    for (var key in obj) {\n        if (hasOwnProperty.call(obj, key)) {\n            return false\n        };\n    }\n\n    return true;\n}\n\n\n// Declare app level module which depends on views, and components\nangular.module(\"ferry-goat-admin\", [\n    \"ngRoute\",\n    \"ngAnimate\",\n    \"restangular\",\n    // \"ferry-goat-admin.index\",\n    // \"ferry-goat-admin.ferries\",\n    // \"ferry-goat-admin.routes\"\n])\n\n.run([\"$rootScope\", function($rootScope) {\n    $rootScope.$on(\"$routeChangeSuccess\", function (event, current, previous) {\n        $rootScope.title = current.$$route.title;\n    });\n}])\n\n.config([\"$routeProvider\", function($routeProvider) {\n    $routeProvider\n        .when(\"/\", {\n            title: \"Anasayfa\",\n            templateUrl: \"js/admin/index/index.html\",\n            controller: \"IndexCtrl\"\n        })\n\n        // .when(\"/ferries\", {\n        //     title: \"Feribotlar\",\n        //     templateUrl: \"js/admin/ferries/index.html\",\n        //     controller: \"FerriesCtrl\"\n        // })\n        // .when(\"/ferries/create\", {\n        //     title: \"Feribot Ekle\",\n        //     templateUrl: \"js/admin/ferries/create.html\",\n        //     controller: \"FerriesCtrl\"\n        // })\n        // .when(\"/ferries/update\", {\n        //     title: \"Feribot Düzenle\",\n        //     templateUrl: \"js/admin/ferries/update.html\",\n        //     controller: \"FerriesCtrl\"\n        // })\n\n        // .when(\"/routes\", {\n        //     title: \"Seferler\",\n        //     templateUrl: \"js/admin/routes/index.html\",\n        //     controller: \"RoutesCtrl\"\n        // })\n        // .when(\"/routes/create\", {\n        //     title: \"Sefer Ekle\",\n        //     templateUrl: \"js/admin/routes/create.html\",\n        //     controller: \"RoutesCtrl\"\n        // })\n\n        .otherwise({\n            title: \"Hata\",\n            templateUrl: \"js/admin/errors/404.html\"\n        })\n}])\n\n.config(function(RestangularProvider) {\n    RestangularProvider\n        .setBaseUrl(window.location.href.substring(0, window.location.href) + \"/api\")\n        // .setDefaultHeaders({\n        //     \"X-User-Agent\": \"Ferry-Goat-Angular\"\n        // })\n        .setRestangularFields({\n            selfLink: \"self.link\"\n        })\n})\n\n.directive(\"backButton\", [\"$window\", function($window) {\n    return {\n        restrict: \"A\",\n        link: function (scope, elem, attrs) {\n            elem.bind(\"click\", function () {\n                $window.history.back();\n            })\n        }\n    };\n}])\n.directive(\"renderSelect\", [\"$window\", function($window) {\n    return {\n        restrict: \"A\",\n        link: function (scope, elem, attrs) {\n            $(elem).material_select();\n        }\n    };\n}])\n",
+			"file": "public/js/admin/app.js",
+			"file_size": 3433,
+			"file_write_time": 130892217223430184,
 			"settings":
 			{
-				"buffer_size": 814,
+				"buffer_size": 3310,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/index.php",
+			"file": "public/js/admin/index/index.html",
 			"settings":
 			{
-				"buffer_size": 7710,
+				"buffer_size": 3,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/init.js",
+			"file": "public/js/admin/index/index.js",
 			"settings":
 			{
-				"buffer_size": 163,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/ferries/ferries.js",
-			"settings":
-			{
-				"buffer_size": 742,
+				"buffer_size": 164,
 				"line_ending": "Windows"
 			}
 		}
@@ -599,14 +594,10 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 354.0,
+		"height": 375.0,
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"setu",
-				"Preferences: Settings - User"
-			],
 			[
 				"clo",
 				"Project: Close"
@@ -638,6 +629,10 @@
 			[
 				"ins",
 				"Package Control: Install Package"
+			],
+			[
+				"setu",
+				"Preferences: Settings - User"
 			],
 			[
 				"sett",
@@ -784,7 +779,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 494.0
+		"width": 450.0
 	},
 	"console":
 	{
@@ -805,44 +800,72 @@
 	},
 	"expanded_folders":
 	[
-		"/D/htdocs/ferry-goat",
-		"/D/htdocs/ferry-goat/app",
-		"/D/htdocs/ferry-goat/app/Http"
+		"/D/Dropbox/htdocs/ferry-goat",
+		"/D/Dropbox/htdocs/ferry-goat/app",
+		"/D/Dropbox/htdocs/ferry-goat/app/Exceptions",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/Middleware",
+		"/D/Dropbox/htdocs/ferry-goat/public",
+		"/D/Dropbox/htdocs/ferry-goat/public/css",
+		"/D/Dropbox/htdocs/ferry-goat/public/img",
+		"/D/Dropbox/htdocs/ferry-goat/public/js",
+		"/D/Dropbox/htdocs/ferry-goat/resources",
+		"/D/Dropbox/htdocs/ferry-goat/resources/views",
+		"/D/Dropbox/htdocs/ferry-goat/storage/logs"
 	],
 	"file_history":
 	[
-		"/C/Users/Ozan/.ssh/id_rsa.pub",
-		"/C/Users/Ozan/AppData/Roaming/Sublime Text 3/Packages/TrailingSpaces/trailing_spaces.sublime-settings",
-		"/C/Users/Ozan/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/D/htdocs/ferry-goat/public/js/index/index.html",
-		"/D/htdocs/ferry-goat/resources/views/index.php",
-		"/D/htdocs/ferry-goat/public/js/ferries/index.html",
-		"/D/htdocs/ferry-goat/public/js/app.js",
-		"/D/htdocs/ferry-goat/public/js/errors/404.html",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/create.html",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/create.html",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/index/index.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/app.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/index/index.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/admin/index/index.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/ferries/update.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/ferries/index.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/ferries/ferries.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/ferries/create.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/errors/404.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/routes/routes.js",
+		"/D/Dropbox/htdocs/ferry-goat/storage/logs/lumen.log",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/site/init.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/css/size/styles.less",
+		"/D/Dropbox/htdocs/ferry-goat/public/css/styles.css",
+		"/D/Dropbox/htdocs/ferry-goat/humans.txt",
 		"/D/Dropbox/htdocs/ferry-goat/resources/views/index.php",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/routes.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/ferries.js",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/routes.php",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/index/index.html",
 		"/D/Dropbox/htdocs/ferry-goat/public/js/app.js",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/add.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/create.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/css/styles.less",
+		"/D/Dropbox/htdocs/ferry-goat/.env",
+		"/D/Dropbox/htdocs/auef/.gitignore",
+		"/D/Dropbox/htdocs/ferry-goat/.gitignore",
 		"/D/Dropbox/htdocs/ferry-goat/things.todo",
+		"/D/Dropbox/htdocs/ferry-goat/app/Exceptions/Handler.php",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/Middleware/OnlyUserAgents.php",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/index/index.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/routes.js",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/errors/404.html",
+		"/D/Dropbox/htdocs/ferry-goat/vendor/laravel/lumen-framework/src/Application.php",
+		"/D/Dropbox/htdocs/ferry-goat/bootstrap/app.php",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/create.html",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/Middleware/Cacheable.php",
+		"/D/Dropbox/htdocs/ferry-goat/vendor/laravel/lumen-framework/src/Exceptions/Handler.php",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/Middleware/AddETag.php",
+		"/D/Dropbox/htdocs/ferry-goat/app/Http/Middleware/ExampleMiddleware.php",
+		"/D/Dropbox/htdocs/ferry-goat/vendor/illuminate/cache/Repository.php",
+		"/D/Dropbox/htdocs/ferry-goat/composer.json",
+		"/D/Dropbox/htdocs/ferry-goat/vendor/illuminate/contracts/Cache/Store.php",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/index.html",
+		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/add.html",
 		"/D/Dropbox/htdocs/ferry-goat/public/js/init.js",
 		"/D/Dropbox/htdocs/ferry-goat/public/index.php",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/ferries.js",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/index/index.js",
-		"/D/Dropbox/htdocs/ferry-goat/app/Http/routes.php",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_112445_create_route_port_table.php",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_112151_create_routes_table.php",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_105300_create_ports_table.php",
-		"/D/Dropbox/htdocs/ferry-goat/.env",
-		"/D/Dropbox/htdocs/ferry-goat/bootstrap/app.php",
-		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/index.html",
 		"/D/Dropbox/htdocs/ferry-goat/resources/views/default.php",
 		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/add.html",
 		"/D/Dropbox/htdocs/ferry-goat/public/js/routes/index.html",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_112954_create_ferries_table.php",
-		"/D/Dropbox/htdocs/ferry-goat/humans.txt",
 		"/D/Dropbox/htdocs/ferry-goat/database/seeds/RoutesTableSeeder.php",
 		"/D/Dropbox/htdocs/ferry-goat/public/js/ferries/view.js",
 		"/D/Dropbox/htdocs/ferry-goat/database/seeds/DatabaseSeeder.php",
@@ -850,9 +873,9 @@
 		"/D/Dropbox/htdocs/ferry-goat/database/seeds/RoutePortTableSeeder.php",
 		"/D/Dropbox/htdocs/ferry-goat/database/seeds/FerriesTableSeeder.php",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_110854_create_ferries_table.php",
-		"/D/Dropbox/htdocs/ferry-goat/vendor/laravel/lumen-framework/src/Application.php",
 		"/D/Dropbox/htdocs/ferry-goat/_package.json",
 		"/D/Dropbox/htdocs/ferry-goat/gulpfile.js",
+		"/C/Users/Ozan/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/D/Dropbox/htdocs/ferry-goat/package.json",
 		"/D/Dropbox/htdocs/ferry-goat/database/migrations/2015_10_10_112300_create_ports_table.php",
 		"/C/Windows/System32/drivers/etc/hosts",
@@ -919,30 +942,11 @@
 		"/D/Dropbox/htdocs/seninkahramanin/app/Image.php",
 		"/D/Dropbox/htdocs/seninkahramanin/things.todo",
 		"/D/Dropbox/htdocs/seninkahramanin/app/Http/Requests/CreateUserRequest.php",
-		"/D/Dropbox/htdocs/seninkahramanin/public/css/partials/admin/cropper.min.css",
-		"/D/Dropbox/htdocs/seninkahramanin/database/seeds/UsersTableSeeder.php",
-		"/D/Dropbox/htdocs/seninkahramanin/config/app.php",
-		"/D/Dropbox/htdocs/seninkahramanin/vendor/fzaninotto/faker/src/Faker/Provider/Image.php",
-		"/D/Dropbox/htdocs/seninkahramanin/app/Providers/EventServiceProvider.php",
-		"/D/Dropbox/htdocs/seninkahramanin/app/Providers/AppServiceProvider.php",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/parsley/parsley.remote.js",
-		"/D/Dropbox/htdocs/seninkahramanin/vendor/bican/roles/src/Bican/Roles/Models/Role.php",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/parsley/i18n/tr.js",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/parsley/parsley.min.js",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/parsley.min.js",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/speakingurl.js",
-		"/D/Dropbox/htdocs/seninkahramanin/public/js/admin/speakingurl.min.js",
-		"/D/Dropbox/htdocs/seninkahramanin/seninkahramanin.sublime-project",
-		"/C/Users/Ozan/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/D/Dropbox/htdocs/seninkahramanin/resources/views/admin/orders/index.blade.php",
-		"/D/Dropbox/htdocs/seninkahramanin/app/Order.php",
-		"/D/Dropbox/htdocs/seninkahramanin/vendor/laravel/framework/src/Illuminate/Contracts/Auth/Authenticatable.php",
-		"/D/Dropbox/htdocs/seninkahramanin/config/instagram.php",
-		"/D/Dropbox/htdocs/seninkahramanin/vendor/ozanmuyes/laravel5cart/database/seeds/CartConditionScopesTableSeeder.php"
+		"/D/Dropbox/htdocs/seninkahramanin/public/css/partials/admin/cropper.min.css"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -982,9 +986,47 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"site/",
+			"site",
+			"js/site",
+			"ferry-goat-site",
+			"site",
+			"// ",
+			"src=\"",
+			"ferry-goat",
 			"'",
-			"create",
-			"name",
+			"ferry-goat",
+			"js/",
+			"ferry-goat",
+			"Ferry-Goat",
+			"ferry-goat",
+			"xsm",
+			"sm",
+			"md",
+			"s4",
+			"ferry",
+			"LIMIT",
+			"m",
+			"title",
+			"templateUrl",
+			"h5",
+			"Cacheable",
+			"    ",
+			"statusCode",
+			"newPort",
+			"addRoute",
+			"h1",
+			"light",
+			"material-icons",
+			"promo-caption",
+			"text",
+			"ems",
+			"sm",
+			"pixels",
+			"AddEtag",
+			"AddETag",
+			"api/",
+			"memcached",
 			"col m4",
 			"'",
 			"p",
@@ -1071,45 +1113,7 @@
 			"sexes_carousel",
 			"sexes-carousel",
 			"slider",
-			"owl",
-			"'",
-			"customNavigation",
-			"fa fa",
-			"\"",
-			"'",
-			"css",
-			"->",
-			"'",
-			"class=\"hidden-sm\"",
-			"name",
-			"items",
-			"6px",
-			"224, 245, 215",
-			"rgba",
-			"'",
-			"separator",
-			"btn",
-			"http://www.jquery2dotnet.com",
-			"info",
-			"separator",
-			"info",
-			"col-item",
-			"price",
-			"//",
-			"rating",
-			"\n{",
-			" : ",
-			"../fonts",
-			"url",
-			"foo",
-			"profilePictureMedium",
-			"$this->profilePicture",
-			"profilePicture",
-			"createdViaAdminPanel",
-			"createdUser",
-			"CreateUser woke up",
-			"picture",
-			"admin->pictures"
+			"owl"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1133,7 +1137,7 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
@@ -1144,204 +1148,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public/js/ferries/update.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1253,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1234,
-								1234
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"_anf_new": "",
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/Http/routes.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 4143,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3283,
-								3283
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 130.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 4,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "public/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3160,
+						"buffer_size": 4218,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3113,
-								3138
+								639,
+								639
 							]
 						],
 						"settings":
@@ -1349,31 +1168,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1394,60 +1193,16 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1240.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/js/ferries/create.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 814,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								257,
-								257
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1458,31 +1213,6 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -1494,95 +1224,9 @@
 								"bh_round_close",
 								"bh_round_content"
 							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/views/index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7710,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								236,
-								236
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
+							"bs_sintax": "php",
+							"buffer_scroll_name": "e240a51f",
+							"spell_check": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -1595,20 +1239,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "public/js/init.js",
+					"buffer": 1,
+					"file": "resources/views/site.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 163,
+						"buffer_size": 7961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								90,
-								90
+								7953,
+								7953
 							]
 						],
 						"settings":
@@ -1616,31 +1260,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1661,6 +1285,26 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -1672,102 +1316,388 @@
 								"bh_round_close",
 								"bh_round_content"
 							],
+							"bs_sintax": "php",
+							"buffer_scroll_name": "ae1f899e",
+							"spell_check": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2220.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "resources/views/admin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8021,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7763,
+								7763
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"bs_sintax": "php",
+							"buffer_scroll_name": "73760d9d",
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2145.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/js/admin/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1088,
+								1088
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"_anf_new": "",
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"bs_sintax": "javascript",
+							"buffer_scroll_name": "3bf39406",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/js/admin/index/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"bs_sintax": "html",
+							"buffer_scroll_name": "4c167299",
+							"spell_check": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/js/admin/index/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47,
+								47
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"bs_sintax": "javascript",
+							"buffer_scroll_name": "57832187",
+							"open_with_edit": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "public/js/ferries/ferries.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 742,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								298,
-								298
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1775,11 +1705,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 63.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -1823,7 +1753,7 @@
 	"project": "ferry-goat.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1833,28 +1763,60 @@
 		"selected_items":
 		[
 			[
-				"initjs",
-				"public\\js\\init.js"
+				"rou",
+				"app\\Http\\routes.php"
 			],
 			[
-				"ferjs",
-				"public\\js\\ferries\\ferries.js"
+				".en",
+				".env"
 			],
 			[
-				"appjs",
-				"public\\js\\app.js"
+				".les",
+				"public\\css\\styles.less"
 			],
 			[
-				"inde",
-				"resources\\views\\index.php"
+				".git",
+				".gitignore"
 			],
 			[
-				"crehtm",
-				"public\\js\\ferries\\create.html"
+				".gi",
+				".gitignore"
+			],
+			[
+				"hum",
+				"humans.txt"
+			],
+			[
+				"th",
+				"things.todo"
+			],
+			[
+				".less",
+				"public\\css\\styles.less"
 			],
 			[
 				"apjs",
 				"public\\js\\app.js"
+			],
+			[
+				"app",
+				"public\\js\\app.js"
+			],
+			[
+				".e",
+				".env"
+			],
+			[
+				"reviinph",
+				"resources\\views\\index.php"
+			],
+			[
+				"com",
+				"composer.json"
+			],
+			[
+				".env",
+				".env"
 			],
 			[
 				"ininht",
@@ -1877,6 +1839,10 @@
 				"public\\js\\index\\index.js"
 			],
 			[
+				"appjs",
+				"public\\js\\app.js"
+			],
+			[
 				"inph",
 				"resources\\views\\index.php"
 			],
@@ -1889,14 +1855,6 @@
 				"resources\\views\\default.php"
 			],
 			[
-				"app",
-				"bootstrap\\app.php"
-			],
-			[
-				"rou",
-				"app\\Http\\routes.php"
-			],
-			[
 				"crfeta",
 				"database\\migrations\\2015_10_10_112954_create_ferries_table.php"
 			],
@@ -1907,6 +1865,10 @@
 			[
 				"sdefbla",
 				"resources\\views\\layouts\\site\\default.blade.php"
+			],
+			[
+				"inde",
+				"resources\\views\\admin\\index.blade.php"
 			],
 			[
 				"prod",
@@ -1937,10 +1899,6 @@
 				"resources\\views\\admin\\users\\show.blade.php"
 			],
 			[
-				".en",
-				".env"
-			],
-			[
 				"user",
 				"app\\User.php"
 			],
@@ -1957,20 +1915,12 @@
 				"config\\queue.php"
 			],
 			[
-				".e",
-				".env"
-			],
-			[
 				"usercre",
 				"resources\\views\\admin\\users\\create.blade.php"
 			],
 			[
 				"side",
 				"resources\\views\\partials\\admin\\sidebar.blade.php"
-			],
-			[
-				"th",
-				"things.todo"
 			],
 			[
 				"createuserrequest",
@@ -2007,10 +1957,6 @@
 			[
 				"bre",
 				"app\\Http\\breadcrumbs.php"
-			],
-			[
-				"com",
-				"composer.json"
 			],
 			[
 				"eve",
@@ -2197,10 +2143,6 @@
 				".gitignore"
 			],
 			[
-				".gi",
-				".gitattributes"
-			],
-			[
 				"add",
 				"app\\Address.php"
 			],
@@ -2331,18 +2273,6 @@
 			[
 				"homep",
 				"resources\\views\\homepage.blade.php"
-			],
-			[
-				"kern",
-				"app\\Http\\Kernel.php"
-			],
-			[
-				"httpker",
-				"vendor\\symfony\\http-kernel\\HttpKernel.php"
-			],
-			[
-				"confap",
-				"config\\app.php"
 			]
 		],
 		"width": 0.0
