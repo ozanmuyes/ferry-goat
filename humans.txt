@@ -1,1 +1,9 @@
-Logo from https://openclipart.org/detail/168057/ram-jumping
+Licenses
+* Logo from https://openclipart.org/detail/168057/ram-jumping
+
+References
+* http://lumen.laravel.com/docs
+* http://materializecss.com
+* https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+* http://stackoverflow.com/a/13407227/250453
+* http://stackoverflow.com/a/24549173/250453

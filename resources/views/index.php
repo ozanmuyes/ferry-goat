@@ -2,13 +2,14 @@
 <html lang="tr" ng-app="ferry-goat">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <title ng-bind="'Ferry-Goat A.Ş. &dash; ' + title">Ferry-Goat A.Ş.</title>
+        <title ng-bind="'Ferry-Goat &dash; ' + title">Ferry-Goat A.Ş.</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <link rel="stylesheet" href="css/styles.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
@@ -56,7 +57,7 @@
         </header>
 
         <main class="container">
-            <div ng-view></div>
+            <div ng-view autoscroll="true"></div>
         </main>
 
         <footer class="page-footer orange">

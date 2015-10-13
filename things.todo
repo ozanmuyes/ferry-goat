@@ -1,12 +1,13 @@
 
 Now
 
- ☐ Foo
-
 Next
-
- ☐ Bar
 
 Before Release
 
  ☐ Remove the hash and make pretty URLs - Modernizr History API
+
+Roadmap
+
+ ☐ Add OPTIONS method support for CORS
+ ☐ Add admin panel - write auth codes

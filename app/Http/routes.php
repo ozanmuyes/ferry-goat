@@ -15,59 +15,102 @@ $app->get("/", function () use ($app) {
     return view("index");
 });
 
+$app->group(
+    [
+        // "middleware" => "OnlyUserAgents",
+        // "middleware" => "Cacheable",
+        "prefix" => "api"
+    ],
+    function ($app) {
+        $app->options("ferries", function () {
+            return "fffffff1111";
+        });
 
-$app->get("api/ferries", function () use ($app) {
-    return $app->db->select("SELECT * FROM ferries");
-});
+        $app->get("ferries", function () use ($app) {
+            return $app->cache->remember("ferries", 1, function () use ($app) {
+                return $app->db->select("SELECT * FROM ferries");
+            });
+        });
 
-$app->post("api/ferries", function () use ($app) {
-    //
-});
+        $app->post("ferries", function () use ($app) {
+            $inputs = $app->request->input();
+
+            // TODO Use transaction if feasible
+            if (!$app->db->insert("INSERT INTO ferries (name, created_at, updated_at) values (:name, NOW(), NOW())", $inputs)) {
+                return abort(500, "SQL error");
+            }
+
+            // We got the ID of last insert, use it to retrieve the resource...
+            $id = $app->db->getPdo()->lastInsertId();
+
+            $createdFerry = $app->db->select("SELECT * FROM ferries WHERE id = $id LIMIT 1");
+            $createdFerry = $createdFerry[0];
+
+            // ...and create a proper response data out of it
+            $createdFerry->self = [
+                "link" => $app->make("url")->to("/api/ferries") . "/" . $id
+            ];
+
+            return response()->json($createdFerry, 201);
+        });
+
+        $app->get("ferries/{id}", function ($id) use ($app) {
+            $ferry = $app->db->select("SELECT * FROM ferries WHERE id = $id LIMIT 1");
+            $ferry = $ferry[0];
+
+            $ferry->self = [
+                "link" => $app->make("url")->to("/api/ferries") . "/" . $id
+            ];
+
+            return response()->json($ferry, 200);
+        });
 
 
-$app->get("api/routes", function () use ($app) {
-    $from = $app->request->input("from");
-    $to = $app->request->input("to");
+        $app->get("routes", function () use ($app) {
+            $from = $app->request->input("from");
+            $to = $app->request->input("to");
 
-    if ($from === null && $to === null) {
-        $query = "SELECT * FROM routes";
-    } else if ($from !== null && $to === null) {
-        $query = "SELECT * FROM routes WHERE id = (SELECT route_id FROM port_route WHERE port_id = (SELECT id FROM ports WHERE name = '" . $from . "'))";
-        $query = $app->db->raw($query);
-    } else if ($from === null && $to !== null) {
-        $query = "SELECT * FROM routes WHERE id = (SELECT route_id FROM port_route WHERE port_id = (SELECT id FROM ports WHERE name = '" . $to . "'))";
-        $query = $app->db->raw($query);
-    } else if ($from !== null && $to !== null) {
-        $query = "SELECT * FROM routes WHERE id = (SELECT DISTINCT route_id FROM port_route WHERE port_id IN (SELECT id FROM ports WHERE name IN ('" . $from . "', '" . $to . "')))";
-        $query = $app->db->raw($query);
+            if ($from === null && $to === null) {
+                $query = "SELECT * FROM routes";
+            } else if ($from !== null && $to === null) {
+                $query = "SELECT * FROM routes WHERE id = (SELECT route_id FROM port_route WHERE port_id = (SELECT id FROM ports WHERE name = '" . $from . "'))";
+                $query = $app->db->raw($query);
+            } else if ($from === null && $to !== null) {
+                $query = "SELECT * FROM routes WHERE id = (SELECT route_id FROM port_route WHERE port_id = (SELECT id FROM ports WHERE name = '" . $to . "'))";
+                $query = $app->db->raw($query);
+            } else if ($from !== null && $to !== null) {
+                $query = "SELECT * FROM routes WHERE id = (SELECT DISTINCT route_id FROM port_route WHERE port_id IN (SELECT id FROM ports WHERE name IN ('" . $from . "', '" . $to . "')))";
+                $query = $app->db->raw($query);
+            }
+
+            $routes = $app->db->select($query);
+
+            return $routes;
+        });
+
+        $app->post("routes", function () use ($app) {
+            return abort(501);
+        });
+
+
+        $app->get("ports", function () use ($app) {
+            return $app->db->select("SELECT * FROM ports");
+        });
+
+        $app->post("ports", function () use ($app) {
+            $inputs = $app->request->input();
+
+            if ($app->db->insert("INSERT INTO ports (name, created_at, updated_at) values (:name, NOW(), NOW())", $inputs)) {
+                return "ok";
+            }
+
+            return "error";
+        });
+
+        $app->get("ports/{portName}", function ($portName) use ($app) {
+            $portName = urldecode($portName);
+
+            return $app->db->select("SELECT * FROM ports WHERE name = '" . $portName . "'");
+        });
     }
-
-    $routes = $app->db->select($query);
-
-    return $routes;
-});
-
-$app->post("api/routes/add", function () use ($app) {
-    //
-});
-
-
-$app->get("api/ports", function () use ($app) {
-    return $app->db->select("SELECT * FROM ports");
-});
-
-$app->post("api/ports/add", function () use ($app) {
-    $inputs = $app->request->input();
-
-    if ($app->db->insert("INSERT INTO ports (name, created_at, updated_at) values (:name, NOW(), NOW())", $inputs)) {
-        return "ok";
-    }
-
-    return "error";
-});
-
-$app->get("api/ports/{portName}", function ($portName) use ($app) {
-    $portName = urldecode($portName);
-
-    return $app->db->select("SELECT * FROM ports WHERE name = '" . $portName . "'");
-});
+);

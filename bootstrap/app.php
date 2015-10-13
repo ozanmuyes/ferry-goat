@@ -63,9 +63,10 @@ $app->singleton(
 //     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
 // ]);
 
-// $app->routeMiddleware([
-
-// ]);
+$app->routeMiddleware([
+    "Cacheable" => App\Http\Middleware\Cacheable::class,
+    "OnlyUserAgents" => App\Http\Middleware\OnlyUserAgents::class
+]);
 
 /*
 |--------------------------------------------------------------------------

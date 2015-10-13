@@ -1,0 +1,40 @@
+@xlg-ems: 8.4em;
+@lg-ems: 4.2em;
+@md-ems: 2.1em;
+@sm-ems: 1em;
+@xsm-ems: 0.5em;
+@ems: @md-ems;
+
+@bigger-font-size: 8.4em;
+@big-font-size: 4.2em;
+@normal-font-size: 2.1em;
+@small-font-size: 1em;
+@smaller-font-size: 0.5em;
+@font-size: @normal-font-size;
+
+header {
+    margin-bottom: @lg-ems;
+}
+
+section,
+.section {
+    margin-top: @ems;
+    margin-bottom: @ems;
+
+    .section-title {
+        margin-top: 0;
+        margin-bottom: @sm-ems;
+    }
+}
+
+.promo {
+    padding: 0 @sm-ems;
+
+    .material-icons {
+        font-size: @big-font-size;
+    }
+}
+
+footer.page-footer {
+    margin-top: @lg-ems;
+}
