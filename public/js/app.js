@@ -6,7 +6,6 @@ String.prototype.endsWith = function(suffix) {
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 function isEmpty(obj) {
-
     // null and undefined are "empty"
     if (obj == null) {
         return true
@@ -69,6 +68,11 @@ angular.module("ferry-goat", [
             templateUrl: "js/ferries/create.html",
             controller: "FerriesCtrl"
         })
+        .when("/ferries/update", {
+            title: "Feribot Düzenle",
+            templateUrl: "js/ferries/update.html",
+            controller: "FerriesCtrl"
+        })
 
         .when("/routes", {
             title: "Seferler",
@@ -105,6 +109,14 @@ angular.module("ferry-goat", [
             elem.bind("click", function () {
                 $window.history.back();
             })
+        }
+    };
+}])
+.directive("renderSelect", ["$window", function($window) {
+    return {
+        restrict: "A",
+        link: function (scope, elem, attrs) {
+            $(elem).material_select();
         }
     };
 }])
