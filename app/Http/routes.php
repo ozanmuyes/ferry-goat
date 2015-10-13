@@ -27,9 +27,9 @@ $app->group(
         });
 
         $app->get("ferries", function () use ($app) {
-            return $app->cache->remember("ferries", 1, function () use ($app) {
+            // return $app->cache->remember("ferries", 1, function () use ($app) {
                 return $app->db->select("SELECT * FROM ferries");
-            });
+            // });
         });
 
         $app->post("ferries", function () use ($app) {

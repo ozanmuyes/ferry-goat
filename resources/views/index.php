@@ -57,10 +57,11 @@
         </header>
 
         <main class="container">
-            <div ng-view autoscroll="true"></div>
+            <div ng-view></div>
+            <!-- <div ng-view autoscroll="true"></div> -->
         </main>
 
-        <footer class="page-footer orange">
+        <footer class="orange">
             <div class="container">
                 <div class="row">
                     <div class="col s12 l6">
