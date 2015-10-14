@@ -16,9 +16,7 @@ $app->get("/", function () use ($app) {
 });
 
 $app->get("admin", function () use ($app) {
-    return "foo";
-
-    // return view("admin");
+    return view("admin");
 });
 
 $app->group(
