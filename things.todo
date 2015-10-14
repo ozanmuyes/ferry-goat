@@ -3,6 +3,8 @@ Now
 
 Next
 
+ ☐ Remove / and /admin paths maybe - do not use router for this kind of operations, just use public directory
+
 Before Release
 
  ☐ Remove the hash and make pretty URLs - Modernizr History API

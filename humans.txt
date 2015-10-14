@@ -7,3 +7,5 @@ References
 * https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
 * http://stackoverflow.com/a/13407227/250453
 * http://stackoverflow.com/a/24549173/250453
+* http://jasonwatmore.com/post/2015/03/10/AngularJS-User-Registration-and-Login-Example.aspx
+* http://stackoverflow.com/a/17377858/250453

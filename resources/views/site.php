@@ -65,8 +65,7 @@
         </header>
 
         <main class="container">
-            <div ng-view></div>
-            <!-- <div ng-view autoscroll="true"></div> -->
+            <div ng-view autoscroll="true"></div>
         </main>
 
         <footer class="orange">

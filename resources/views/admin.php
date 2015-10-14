@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+        <script>
+            document.write('<base href="' + document.location + '" />');
+        </script>
+
         <title ng-bind="'Ferry-Goat Yönetim Paneli - ' + title">Ferry-Goat Yönetim Paneli</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,8 +26,10 @@
     </head>
 
     <body>
-        foo!
+        <div ng-view></div>
 
+        <script src="js/common/services/auth.js"></script>
+        <script src="js/index/index.js"></script>
         <script src="../js/init.js"></script>
         <script src="js/app.js"></script>
     </body>

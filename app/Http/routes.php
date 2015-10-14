@@ -116,5 +116,21 @@ $app->group(
 
             return $app->db->select("SELECT * FROM ports WHERE name = '" . $portName . "'");
         });
+
+
+        $app->get("users/ozanmuyes", function () use ($app) {
+            // TODO Check the Authorization headers and return the user if credentials are valid
+
+            return response()->json([
+                "id" => 1,
+                "first_name" => "Ozan",
+                "last_name" => "Müyesseroğlu",
+                "username" => "ozanmuyes"
+            ], 200);
+        });
     }
 );
+
+$app->get("{route:\w+}", function ($route) {
+    return redirect("/#/" . $route);
+});

@@ -5,9 +5,7 @@ angular.module("ferry-goat-admin", [
     "ngRoute",
     "ngAnimate",
     "restangular",
-    // "ferry-goat-admin.index",
-    // "ferry-goat-admin.ferries",
-    // "ferry-goat-admin.routes"
+    "ferry-goat-admin.index"
 ])
 
 .run(["$rootScope", function($rootScope) {
