@@ -10,27 +10,56 @@
             </div>
 
             <div class="row">
+                <div class="input-field col m8 offset-m2">
+                    <input id="number" class="validate" type="text" name="number" placeholder="Sefer Numarası" ng-model="newRoute.number">
+
+                    <label for="number">Sefer Numarası</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col m8 offset-m2">
+                    <input id="fee" class="validate" type="number" name="fee" placeholder="Sefer Ücreti" ng-model="newRoute.fee">
+
+                    <label for="fee">Sefer Ücreti</label>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="input-field col m4 offset-m2">
-                    <!-- <select> -->
-                    <select on-finish-render>
+                    <!-- Nereden -->
+                    <select class="browser-default"
+                        ng-options="port.id as port.name for port in allPorts"
+                        ng-model="newRoute.fromPortId">
+                    </select>
+
+                    <!-- <select>
                         <option disabled selected>Nereden</option>
 
                         <option ng-repeat="port in allPorts" value="{{ port.id }}">
                             {{ port.name }}
                         </option>
                     </select>
-
-                    <label>Nereden</label>
+                    <label>Nereden</label> -->
                 </div>
 
-                <!-- <div class="input-field col m4">
-                    <select on-finish-render>
-                        <option value="" disabled selected>Nereye</option>
-                        <option ng-repeat="port in allPorts" value="{{ port.id }}">{{ port.name }}</option>
+                <div class="input-field col m4">
+                    <!-- Nereye -->
+                    <select class="browser-default"
+                        ng-options="port.id as port.name for port in allPorts"
+                        ng-model="newRoute.toPortId">
                     </select>
+                </div>
+            </div>
 
-                    <label>Nereye</label>
-                </div> -->
+            <div class="row">
+                <div class="input-field col m8 offset-m2">
+                    <!-- Feribot Adı -->
+                    <select class="browser-default"
+                        ng-options="ferry.id as ferry.name for ferry in allFerries"
+                        ng-model="newRoute.ferryId">
+                    </select>
+                </div>
             </div>
 
             <div class="row">

@@ -45,14 +45,14 @@ $app->group(
             }
 
             // We got the ID of last insert, use it to retrieve the resource...
-            $id = $app->db->getPdo()->lastInsertId();
+            $createdFerryId = $app->db->getPdo()->lastInsertId();
 
-            $createdFerry = $app->db->select("SELECT * FROM ferries WHERE id = $id LIMIT 1");
+            $createdFerry = $app->db->select("SELECT * FROM ferries WHERE id = $createdFerryId LIMIT 1");
             $createdFerry = $createdFerry[0];
 
             // ...and create a proper response data out of it
             $createdFerry->self = [
-                "link" => $app->make("url")->to("/api/ferries") . "/" . $id
+                "link" => $app->make("url")->to("/api/ferries") . "/" . $createdFerryId
             ];
 
             return response()->json($createdFerry, 201);
@@ -93,7 +93,49 @@ $app->group(
         });
 
         $app->post("routes", function () use ($app) {
-            return abort(501);
+            $inputs = $app->request->input();
+
+            if (!isset($inputs["number"])) {
+                return abort(400, "Missing input, route number.");
+            }
+
+            if (!isset($inputs["name"])) {
+                return abort(400, "Missing input, route name.");
+            }
+
+            if (!isset($inputs["fee"])) {
+                return abort(400, "Missing input, route fee.");
+            }
+
+            if (!isset($inputs["fromPortId"])) {
+                return abort(400, "Missing input, route fromPortId.");
+            }
+
+            if (!isset($inputs["toPortId"])) {
+                return abort(400, "Missing input, route toPortId.");
+            }
+
+            if (!isset($inputs["ferryId"])) {
+                return abort(400, "Missing input, route ferryId.");
+            }
+
+            // Add newly created route and get the id
+            $app->db->insert("INSERT INTO routes (number, name, fee, created_at, updated_at) values (?, ?, ?, NOW(), NOW())", [
+                $inputs["number"],
+                $inputs["name"],
+                $inputs["fee"]
+            ]);
+
+            $createdRouteId = $app->db->getPdo()->lastInsertId();
+
+            // Add ports to newly created route
+            $app->db->insert("INSERT INTO port_route (port_id, route_id, created_at, updated_at) values (" . $inputs["fromPortId"] . ", " . $createdRouteId . ", NOW(), NOW()), (" . $inputs["toPortId"] . ", " . $createdRouteId . ", NOW(), NOW())");
+
+            // Associate the ferry with newly created route
+            $app->db->update("UPDATE ferries SET route_id = $createdRouteId WHERE id = " . $inputs["ferryId"]);
+
+            // TODO Return newly created route with associations
+            return response()->json([], 200);
         });
 
 
