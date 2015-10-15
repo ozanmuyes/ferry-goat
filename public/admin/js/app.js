@@ -5,6 +5,7 @@ angular.module("ferry-goat-admin", [
     "ngRoute",
     "ngAnimate",
     "restangular",
+    "ferry-goat-admin.auth",
     "ferry-goat-admin.index"
 ])
 
@@ -58,9 +59,10 @@ angular.module("ferry-goat-admin", [
 .config(function(RestangularProvider) {
     RestangularProvider
         .setBaseUrl(window.location.href.substring(0, window.location.href) + "/api")
-        // .setDefaultHeaders({
-        //     "X-User-Agent": "Ferry-Goat-Angular"
-        // })
+        .setDefaultHeaders({
+            // "X-User-Agent": "Ferry-Goat-Angular"
+            "X-Requested-With": "XMLHttpRequest"
+        })
         .setRestangularFields({
             selfLink: "self.link"
         })

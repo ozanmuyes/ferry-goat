@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call("RoutesTableSeeder");
         $this->call("RoutePortTableSeeder");
         $this->call("FerriesTableSeeder");
+        $this->call("UsersTableSeeder");
 
         Model::reguard();
     }

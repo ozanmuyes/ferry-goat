@@ -128,22 +128,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if ($e instanceof HttpException && $request->ajax()) {
+            $statusCode = $e->getStatusCode();
 
-        $statusCode = $e->getStatusCode();
+            if (env("APP_DEBUG")) {
+                $message = $e->getmessage() ?: $this->statusCodeMessages[$statusCode];
+            } else {
+                $message = $this->statusCodeMessages[$statusCode];
+            }
 
-        if (env("APP_DEBUG")) {
-            $message = $e->getmessage() ?: $this->statusCodeMessages[$statusCode];
+            return response()->json(
+                [
+                    "status_code" => $statusCode,
+                    "message" => $message,
+                ],
+                $statusCode
+            );
         } else {
-            $message = $this->statusCodeMessages[$statusCode];
+            return parent::render($request, $e);
         }
-
-        return response()->json(
-            [
-                "statusCode" => $statusCode,
-                "message" => $message,
-            ],
-            $statusCode
-        );
     }
 }

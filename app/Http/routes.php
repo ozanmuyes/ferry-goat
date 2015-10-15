@@ -118,14 +118,52 @@ $app->group(
         });
 
 
-        $app->get("users/ozanmuyes", function () use ($app) {
+        $app->get("users/{username}", function ($username) use ($app) {
             // TODO Check the Authorization headers and return the user if credentials are valid
 
+            $authorizationHeader = $app->request->header("Authorization");
+
+            if ($authorizationHeader === null) {
+                return abort(401, "Authorization required.", [
+                    "WWW-Authenticate" => "Basic: realm=\"ferry-goat\""
+                ]);
+            }
+
+            // TODO Move them to function for inspect and spliting authorization header and
+            // return type, username and password
+            //
+            $authorizationType = explode(" ", $authorizationHeader);
+            $encodedCredentials = base64_decode($authorizationType[1]);
+            $authorizationType = $authorizationType[0];
+
+            $usernameFromHeader = explode(":", $encodedCredentials);
+            $password = $usernameFromHeader[1];
+            $usernameFromHeader = $usernameFromHeader[0];
+
+            // TODO Decrypt password
+
+            if ($username !== $usernameFromHeader) {
+                return abort(422, "Authorization request integrity check failure.");
+            }
+
+            $user = $app->db->select("SELECT * FROM users WHERE username = '$username' AND password = '$password' LIMIT 1");
+
+            if ($user == null) {
+                return abort(422, "Bad credentials.");
+            }
+
+            $user = $user[0];
+
+            // Do NOT expose sensitive data
+            unset($user->password);
+            unset($user->created_at);
+            unset($user->updated_at);
+            unset($user->remember_token);
+
+            // TODO Add token to response
+
             return response()->json([
-                "id" => 1,
-                "first_name" => "Ozan",
-                "last_name" => "Müyesseroğlu",
-                "username" => "ozanmuyes"
+                "user" => $user
             ], 200);
         });
     }

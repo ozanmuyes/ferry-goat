@@ -60,9 +60,10 @@ angular.module("ferry-goat-site", [
 .config(function(RestangularProvider) {
     RestangularProvider
         .setBaseUrl(window.location.href.substring(0, window.location.href) + "/api")
-        // .setDefaultHeaders({
-        //     "X-User-Agent": "Ferry-Goat-Angular"
-        // })
+        .setDefaultHeaders({
+            // "X-User-Agent": "Ferry-Goat-Angular"
+            "X-Requested-With": "XMLHttpRequest"
+        })
         .setRestangularFields({
             selfLink: "self.link"
         })

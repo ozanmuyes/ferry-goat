@@ -1,10 +1,14 @@
-'use strict';
+"use strict";
 
-angular.module('ferry-goat-admin', [])
-    .factory('AuthenticationService', AuthenticationService);
+angular.module("ferry-goat-admin.auth", [])
+    // .factory('AuthenticationService', AuthenticationService);
 
-AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout', "Restangular"];
-function AuthenticationService($http, $cookieStore, $rootScope, $timeout, Restangular) {
+.factory("auth", ["$http", "$rootScope", "$timeout", "Restangular", function ($http, $rootScope, $timeout, Restangular) {
+
+// }])
+
+// AuthenticationService.$inject = ['$http', '$rootScope', '$timeout', "Restangular"];
+// function AuthenticationService($http, $rootScope, $timeout, Restangular) {
     var service = {};
 
     service.Login = Login;
@@ -14,7 +18,6 @@ function AuthenticationService($http, $cookieStore, $rootScope, $timeout, Restan
     return service;
 
     function Login(username, password, callback) {
-
         /* Dummy authentication for testing, uses $timeout to simulate api call
          ----------------------------------------------*/
         // $timeout(function () {
@@ -37,7 +40,15 @@ function AuthenticationService($http, $cookieStore, $rootScope, $timeout, Restan
         //        callback(response);
         //    });
 
-
+        Restangular.one("users", username).get(
+            {},
+            {
+                "Authorization": "Basic " + Base64.encode(username + ":" + password)
+            }).then(function (response) {
+console.log(response);
+        }, function (error) {
+console.log(error);
+        })
     }
 
     function SetCredentials(username, password) {
@@ -51,15 +62,18 @@ function AuthenticationService($http, $cookieStore, $rootScope, $timeout, Restan
         };
 
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-        $cookieStore.put('globals', $rootScope.globals);
+        // TODO Fix this
+        // $cookieStore.put('globals', $rootScope.globals);
     }
 
     function ClearCredentials() {
         $rootScope.globals = {};
-        $cookieStore.remove('globals');
+        // TODO Fix this
+        // $cookieStore.remove('globals');
         $http.defaults.headers.common.Authorization = 'Basic ';
     }
-}
+// }
+}])
 
 // Base64 encoding service used by AuthenticationService
 var Base64 = {
