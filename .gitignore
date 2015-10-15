@@ -1,5 +1,5 @@
 /bootstrap/compiled.php
 .env
 /vendor
-*.sublime-workspace
+*.sublime-*
 composer.lock
