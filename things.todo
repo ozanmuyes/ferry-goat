@@ -1,6 +1,7 @@
 
 Now
 
+ ☐ Convert AdminLTE's login page into AngularJS
  ☐ Split admin panel components (header, sidebar etc.) to AngularJS templates
 
 Next

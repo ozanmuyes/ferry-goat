@@ -9,16 +9,17 @@ angular.module("ferry-goat-site.routes", [])
 
     $scope.newRoute = {};
 
-    allRoutes.getList().then(function (routes) {
-        $scope.allRoutes = routes;
-    });
+    // allRoutes.getList().then(function (routes) {
+    //     $scope.allRoutes = routes;
+    // });
 
-    allPorts.getList().then(function (ports) {
-        $scope.allPorts = ports;
-    });
+    // allPorts.getList().then(function (ports) {
+    //     $scope.allPorts = ports;
+    // });
 
     allFerries.getList().then(function (ferries) {
         $scope.allFerries = ferries;
+console.log(ferries.data);
     });
 
     $scope.addRoute = function () {

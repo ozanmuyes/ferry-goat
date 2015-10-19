@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
@@ -30,10 +30,6 @@
                     </a>
 
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="#/ferries">Feribotlar</a>
-                        </li>
-
                         <li>
                             <a href="#/routes">Seferler</a>
                         </li>
@@ -156,7 +152,7 @@
                     Front-end
                     <a href="https://angularjs.org/" class="orange-text text-lighten-3">AngularJS</a>
                     ve
-                    <a href="http://materializecss.com" class="orange-text text-lighten-3">Materialize</a>
+                    <a href="http://materializecss.com" class="orange-text text-lighten-3">Materialize CSS</a>
                     ile, back-end
                     <a href="http://lumen.laravel.com/" class="orange-text text-lighten-3">Lumen</a>
                     ile,

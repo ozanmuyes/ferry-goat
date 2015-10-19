@@ -1,7 +1,22 @@
 <div class="row">
-    <div class="col m6 offset-m3">
+    <input type="date" class="datepicker">
+
+
+    <div class="col m6">
         <div class="section">
-            seferler
+            foo
+            <select class="browser-default" ng-model="allFerries[0]" ng-options="ferry.name for ferry in allFerries">
+                <option value="">bar</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col m6">
+        <div class="section">
+            bar
+            <select class="browser-default" ng-model="allFerries[0]" ng-options="ferry.name for ferry in allFerries">
+                <option value="">-- choose color --</option>
+            </select>
         </div>
     </div>
 </div>
